@@ -23,11 +23,20 @@ public class BlogService {
 
     public Blog createAndReturnBlog(Integer userId, String title, String content) {
         //create a blog at the current time
+        Blog blog=new Blog();
+        blog.setContent(content);
+        blog.setId(userId);
+        blog.setTitle(title);
+        java.util.Date date = new java.util.Date();
+        blog.setPubDate(date);
+        return blogRepository1.save(blog);
+
 
     }
 
     public void deleteBlog(int blogId){
         //delete blog and corresponding images
+        blogRepository1.deleteById(blogId);
 
     }
 }
